@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KidsPlay - Play Games & Earn Points</title>
+  <title>SmartWorld - Play & Earn</title>
   <style>
     body {
       font-family: "Poppins", sans-serif;
@@ -17,7 +17,7 @@
       background: #004aad;
       color: white;
       padding: 20px;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
     }
     nav {
@@ -48,7 +48,7 @@
     button:hover {
       background: #0066ff;
     }
-    .game-box {
+    .game-box, .offer-box {
       background: white;
       margin: 20px auto;
       padding: 20px;
@@ -72,23 +72,24 @@
   </style>
 </head>
 <body>
-  <header>🎮 KidsPlay - Fun Games & Points 🎯</header>
+  <header>🌍 SmartWorld - Play Games & Earn Rewards 💰</header>
   <nav>
     <a href="#home">Home</a>
     <a href="#games">Games</a>
+    <a href="#offers">Offers</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <section id="home">
-    <h2>Welcome to KidsPlay!</h2>
-    <p>Play games, have fun, and earn points! 🎉</p>
+    <h2>Welcome to SmartWorld!</h2>
+    <p>Play games, complete offers & earn points instantly 🎉</p>
     <p id="points">Your Points: <span id="score">0</span></p>
   </section>
 
+  <!-- GAMES SECTION -->
   <section id="games">
-    <h2>🎲 Play & Earn</h2>
+    <h2>🎮 Play & Earn</h2>
 
-    <!-- Game 1: Rock Paper Scissors -->
     <div class="game-box">
       <h3>Rock Paper Scissors</h3>
       <button onclick="playRPS('rock')">Rock</button>
@@ -97,7 +98,6 @@
       <p id="rpsResult"></p>
     </div>
 
-    <!-- Game 2: Number Guess -->
     <div class="game-box">
       <h3>Number Guess (1 to 5)</h3>
       <input type="number" id="guessInput" min="1" max="5">
@@ -105,14 +105,12 @@
       <p id="guessResult"></p>
     </div>
 
-    <!-- Game 3: Click Challenge -->
     <div class="game-box">
       <h3>Click Challenge (Click 10 times fast!)</h3>
       <button onclick="clickGame()">Click Me!</button>
       <p id="clickCount">Clicks: 0</p>
     </div>
 
-    <!-- Game 4: Quiz Game -->
     <div class="game-box">
       <h3>Quick Quiz</h3>
       <p>What is the capital of Pakistan?</p>
@@ -123,6 +121,36 @@
     </div>
   </section>
 
+  <!-- OFFERS SECTION -->
+  <section id="offers">
+    <h2>🤑 Complete Offers & Earn</h2>
+
+    <div class="offer-box">
+      <h3>Visit a Website</h3>
+      <p>Click below to visit our partner site & earn 10 points.</p>
+      <button onclick="completeOffer('visit')">Visit Now</button>
+    </div>
+
+    <div class="offer-box">
+      <h3>Watch a Video</h3>
+      <p>Watch a short video and earn 10 points.</p>
+      <button onclick="completeOffer('video')">Watch Video</button>
+    </div>
+
+    <div class="offer-box">
+      <h3>Subscribe to Channel</h3>
+      <p>Subscribe to our YouTube channel & earn 10 points.</p>
+      <button onclick="completeOffer('subscribe')">Subscribe</button>
+    </div>
+
+    <div class="offer-box">
+      <h3>Download App</h3>
+      <p>Download our partner app & earn 10 points.</p>
+      <button onclick="completeOffer('download')">Download</button>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
   <section id="contact">
     <h2>📩 Contact Us</h2>
     <form action="https://formspree.io/f/xzzjnwav" method="POST">
@@ -190,6 +218,12 @@
       } else {
         document.getElementById("quizResult").innerText = "Wrong Answer!";
       }
+      updatePoints();
+    }
+
+    function completeOffer(type) {
+      alert("Offer completed! +10 points");
+      points += 10;
       updatePoints();
     }
   </script>
